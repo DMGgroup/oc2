@@ -7,6 +7,6 @@
 /image/cache/**/*.*
 /image/temp/*.*
 /_mod/*.*
-/32214install/*.*
+/_32214install/*.*
 /system/storage/cache/*.*
 /system/storage/upload/**
