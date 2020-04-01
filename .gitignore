@@ -1,0 +1,12 @@
+/.git/
+/**/Thumbs.db
+/**/*.DS_Store
+/catalog/view/theme/basecart/app/
+/catalog/view/theme/basecart/node_modules/
+/catalog/view/theme/basecart/package-lock.json
+/image/cache/**/*.*
+/image/temp/*.*
+/_mod/*.*
+/32214install/*.*
+/system/storage/cache/*.*
+/system/storage/upload/**
