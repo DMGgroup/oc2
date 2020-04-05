@@ -134,3 +134,131 @@ FILE: system/library/template/tiwg.php
 REGEX: ~(require|include)(_once)?\(([^)]+)~
 LINE: 24
 ----------------------------------------------------------------
+2020-04-04 23:19:09 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: Easy Export
+
+FILE: admin/controller/startup/startup.php
+CODE: $this->registry->set('openbay', new Openbay($this->registry));
+LINE: 64
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['delete'] = $this->url->link('catalog/product/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/controller/customer/customer.php
+CODE: $data['delete'] = $this->url->link('customer/customer/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/controller/sale/order.php
+CODE: $data['delete'] = str_replace('&amp;', '&', $this->url->link('sale/order/delete', 'user_token=' . $this->session->data['user_token'] . $url, true));
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/language/en-gb/en-gb.php
+CODE: // Error
+LINE: 147
+----------------------------------------------------------------
+2020-04-04 23:32:49 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 49
+LINE: 108
+LINE: 120
+LINE: 165
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 38
+LINE: 40
+LINE: 49
+LINE: 51
+LINE: 60
+LINE: 62
+
+FILE: system/library/template/php.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+
+FILE: system/library/template/tiwg.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 24
+----------------------------------------------------------------
+MOD: 2.2 CSV Import 
+----------------------------------------------------------------
+MOD: Easy Export
+
+FILE: admin/controller/startup/startup.php
+CODE: $this->registry->set('openbay', new Openbay($this->registry));
+LINE: 64
+
+FILE: admin/controller/catalog/product.php
+CODE: $data['delete'] = $this->url->link('catalog/product/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/controller/customer/customer.php
+CODE: $data['delete'] = $this->url->link('customer/customer/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/controller/sale/order.php
+CODE: $data['delete'] = str_replace('&amp;', '&', $this->url->link('sale/order/delete', 'user_token=' . $this->session->data['user_token'] . $url, true));
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: admin/language/en-gb/en-gb.php
+CODE: // Error
+LINE: 147
+----------------------------------------------------------------
+MOD: Export/Import Tool (V3.22) for OpenCart 2.x
+
+FILE: admin/language/ru/common/menu.php
+CODE: $_['text_backup']
+LINE: 10
+
+FILE: admin/controller/common/column_left.php
+CODE: if ($this->user->hasPermission('access', 'tool/log')) {
+LINE: 635
+
+FILE: admin/language/en-gb/common/column_left.php
+CODE: $_['text_backup']
+LINE: 9
+----------------------------------------------------------------

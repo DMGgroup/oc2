@@ -22,9 +22,10 @@
     <?php } ?>
     <link href="catalog/view/theme/basecart/css/font-awesome.min.css" rel="stylesheet">
     <!-- END basecart module -->
-    <link href="catalog/view/theme/basecart/css/styles.min.css" rel="stylesheet">
-    <script src="catalog/view/theme/basecart/js/scripts.min.js"></script>
+    <link href="catalog/view/theme/basecart/app/css/styles.min.css" rel="stylesheet">
+    <script src="catalog/view/theme/basecart/app/js/scripts.min.js"></script>
     <script src="catalog/view/theme/basecart/js/common.js"></script>
+
 
     <?php foreach ($links as $link) { ?>
     <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>">
@@ -41,123 +42,123 @@
 </head>
 
 <body class="<?php echo $class; ?>">
+
+
+
     <header>
         <?php $class = 'navbar-default'; ?>
 
-        <nav class="navbar <?php echo $class; ?>">
-            <div class="container">
-                <div class="navbar-header w-100">
-                    <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <?php if ($logo) { ?>
-                    <a class="navbar-brand" href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-                    <?php } else { ?>
-                    <a class="navbar-brand" href="<?php echo $home; ?>">
-                        <?php echo $name; ?>
-                    </a>
-                    <?php } ?>
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-12 border-bottom border-primary">
+                <div class="card bg-white card-header border-0 border-bottom">
+                    <p class="text-center text-uppercase m-0 lead py-2"> кикие-нибудь важные новости о скидках</p>
                 </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <?php if ($categories) { ?>
-                    <ul class="nav navbar-nav">
-                        <?php foreach ($categories as $category) { ?>
-                        <?php if ($category['children']) { ?>
-                        <li class="dropdown">
-                            <a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $category['name']; ?> <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-                                <?php foreach ($children as $child) { ?>
-                                <li>
-                                    <a href="<?php echo $child['href']; ?>">
-                                        <?php echo $child['name']; ?>
-                                    </a>
+            </div>
+        </div>
+        <div class="mt-4 mb-4">
+            <div class="row flex-nowrap justify-content-between align-items-start ">
+                <div class="col-3 pt-1">
+                    <nav class="navbar navbar-expand-xxl navbar-light bg-white position-absolute" style="z-index: 20;" id="leftMenu">
+                        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                            <svg viewBox="0 0 80 60">
+                                <path d="M30,22 C30,22 52,22 54,22 C74,22 64,54 52,42 C44,34 30,20 30,20" id="top"></path>
+                                <path d="M30,32 L54,32" id="middle"></path>
+                                <path d="M30,21 C30,21 52,21 54,21 C74,21 64,53 52,41 C44,33 30,19 30,19" id="bottom" transform="translate(48, 32) scale(1, -1) translate(-48, -32) "></path>
+                            </svg>
+
+                        <!-- <span class="navbar-toggler-icon"></span> -->
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Centered nav only <span class="sr-only">(current)</span></a>
                                 </li>
-                                <?php } ?>
-                                <?php } ?>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="<?php echo $category['href']; ?>">
-                                        <?php echo $text_all; ?>
-                                        <?php echo $category['name']; ?>
-                                    </a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown08">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
                                 </li>
                             </ul>
-                        </li>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-6 text-center">
+                    <a class="blog-header-logo text-dark" href="#">
+                        <?php if ($logo) { ?>
+                        <a class="navbar-brand" href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
                         <?php } else { ?>
-                        <li>
-                            <a href="<?php echo $category['href']; ?>">
-                                <?php echo $category['name']; ?>
-                            </a>
-                        </li>
+                        <a class="navbar-brand" href="<?php echo $home; ?>">
+                            <?php echo $name; ?>
+                        </a>
                         <?php } ?>
-                        <?php } ?>
-                    </ul>
-                    <?php } ?>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li id="hiddenM"><a class="btn btn-link" role="button" data-toggle="collapse" href="#hiddenMenu" aria-expanded="false" aria-controls="hiddenMenu"><i class="fa fa-ellipsis-h n-icon"></i></a></li>
-                        <?php echo $cart; ?>
-                        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user n-icon"></i><span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <?php if ($logged) { ?>
-                                <li>
-                                    <a href="<?php echo $account; ?>">
-                                        <?php echo $text_account; ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $order; ?>">
-                                        <?php echo $text_order; ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $transaction; ?>">
-                                        <?php echo $text_transaction; ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $download; ?>">
-                                        <?php echo $text_download; ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $logout; ?>">
-                                        <?php echo $text_logout; ?>
-                                    </a>
-                                </li>
-                                <?php } else { ?>
-                                <li>
-                                    <a href="<?php echo $register; ?>">
-                                        <?php echo $text_register; ?>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo $login; ?>">
-                                        <?php echo $text_login; ?>
-                                    </a>
-                                </li>
-                                <?php } ?>
-                            </ul>
-                        </li>
-                    </ul>
+                    </a>
                 </div>
-                <div class="collapse" id="hiddenMenu">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <?php echo $currency; ?>
-                        </div>
-                        <div class="col-sm-4">
-                            <?php echo $language; ?>
-                        </div>
-                        <div class="col-sm-4">
-                            <?php echo $search; ?>
-                        </div>
+                <div class="col-3 d-flex justify-content-end align-items-center">
+                    <?php echo $search; ?>
+                    <?php echo $cart; ?>
+                    <div id="user">
+                        <a class="btn btn-link" href="<?php echo $order; ?>" aria-label="User">
+                            <img class="img-fluid" src="catalog/view/theme/basecart/app/img/@1x/icon_user.png" srcset="catalog/view/theme/basecart/app/img/@1x/icon_user.png 1x, catalog/view/theme/basecart/app/img/@2x/icon_user.png 2x" alt="icon_user">
+                        </a>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+        <div class="container pb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-xxl-10">
+                    <nav class="navbar navbar-expand-xxl navbar-white bg-white p-0">
+                        <div class=" navbar-collapse justify-content-md-center" id="mainNavbar">
+                            <?php if ($categories) { ?>
+                            <ul class="nav navbar-nav  nav-fill">
+                                <?php foreach ($categories as $category) { ?>
+                                <?php if ($category['children']) { ?>
+                                <li class="dropdown nav-item">
+                                    <a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <?php echo $category['name']; ?> <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                                        <?php foreach ($children as $child) { ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo $child['href']; ?>">
+                                                <?php echo $child['name']; ?>
+                                            </a>
+                                        </li>
+                                        <?php } ?>
+                                        <?php } ?>
+                                        <li role="separator" class="divider" nav-item></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<?php echo $category['href']; ?>">
+                                                <?php echo $text_all; ?>
+                                                <?php echo $category['name']; ?>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <?php } else { ?>
+                                <li class=" nav-item">
+                                    <a class="nav-link" href="<?php echo $category['href']; ?>">
+                                        <?php echo $category['name']; ?>
+                                    </a>
+                                </li>
+                                <?php } ?>
+                                <?php } ?>
+                            </ul>
+                            <?php } ?>
+
+                        </div>
+                    </nav>
+                    <div class="line-menu"></div>
+                </div>
+            </div>
+        </div>
     </header>
