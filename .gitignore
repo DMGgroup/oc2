@@ -10,3 +10,5 @@
 /_32214install/*.*
 /system/storage/cache/*.*
 /system/storage/upload/**
+config.php
+/admin/config.php
