@@ -48,7 +48,7 @@
     <header>
         <?php $class = 'navbar-default'; ?>
 
-        <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="row no-gutters flex-nowrap justify-content-between align-items-center">
             <div class="col-12 border-bottom border-primary">
                 <div class="card bg-white card-header border-0 border-bottom">
                     <p class="text-center text-uppercase m-0 lead py-2"> кикие-нибудь важные новости о скидках</p>
@@ -56,9 +56,9 @@
             </div>
         </div>
         <div class="mt-4 mb-4">
-            <div class="row flex-nowrap justify-content-between align-items-start ">
-                <div class="col-3 pt-1">
-                    <nav class="navbar navbar-expand-xxl navbar-light bg-white position-absolute" style="z-index: 20;" id="leftMenu">
+            <div class="row no-gutters justify-content-between align-items-start ">
+                <div class="col-4 col-lg-3 pt-1">
+                    <nav class="navbar navbar-expand-sm navbar-light bg-white position-absolute" style="z-index: 20;" id="leftMenu">
                         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
                             <svg viewBox="0 0 80 60">
                                 <path d="M30,22 C30,22 52,22 54,22 C74,22 64,54 52,42 C44,34 30,20 30,20" id="top"></path>
@@ -91,18 +91,18 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-6 text-center">
-                    <a class="blog-header-logo text-dark" href="#">
-                        <?php if ($logo) { ?>
-                        <a class="navbar-brand" href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-                        <?php } else { ?>
-                        <a class="navbar-brand" href="<?php echo $home; ?>">
-                            <?php echo $name; ?>
-                        </a>
-                        <?php } ?>
+                <div class="col-8 col-lg-6 text-center">
+
+                    <?php if ($logo) { ?>
+                    <a class="navbar-brand" href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-fluid" /></a>
+                    <?php } else { ?>
+                    <a class="navbar-brand" href="<?php echo $home; ?>">
+                        <?php echo $name; ?>
                     </a>
+                    <?php } ?>
+
                 </div>
-                <div class="col-3 d-flex justify-content-end align-items-center">
+                <div class="col-12 text-center col-lg-3 d-flex justify-content-end justify-content-lg-end align-items-center">
                     <?php echo $search; ?>
                     <?php echo $cart; ?>
                     <div id="user">
@@ -114,9 +114,9 @@
             </div>
         </div>
         <div class="container pb-4">
-            <div class="row justify-content-center">
+            <div class="row no-gutters justify-content-center">
                 <div class="col-md-12 col-xxl-10">
-                    <nav class="navbar navbar-expand-xxl navbar-white bg-white p-0">
+                    <nav class="navbar navbar-expand-sm navbar-white bg-white p-0">
                         <div class=" navbar-collapse justify-content-md-center" id="mainNavbar">
                             <?php if ($categories) { ?>
                             <ul class="nav navbar-nav  nav-fill">

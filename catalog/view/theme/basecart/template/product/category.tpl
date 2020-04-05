@@ -1,86 +1,109 @@
 <?php echo $header; ?>
 <section>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                    <?php
-                        $thisURL = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
-                        foreach ($breadcrumbs as $breadcrumb) { ?>
-                    
-                        <?php if ($thisURL !== $breadcrumb['href'] )  { ?>
-                            <li class="breadcrumb-item"><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-                                <?php }  else { ?>
-                            <li class="breadcrumb-item active" aria-current="page"><?php echo $breadcrumb['text']; ?></li>
-                        <?php } ?>
-                    <?php } ?>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
     <div class="jumbotron text-center bg-info">
         <p class="h2 text-uppercase text-white">
             <?php echo $heading_title; ?>
         </p>
     </div>
 
-    <?php if ($thumb || $description) { ?>
+    <div class="container">
         <div class="row">
-            <?php if ($thumb) { ?>
-            <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
+
+            <?php echo $column_left; ?>
+            <?php if ($column_left && $column_right) { ?>
+            <?php $class = 'col-sm-6'; ?>
+            <?php } elseif ($column_left || $column_right) { ?>
+            <?php $class = 'col-sm-9'; ?>
+            <?php } else { ?>
+            <?php $class = 'col-sm-12'; ?>
             <?php } ?>
-            <?php if ($description) { ?>
-            <div class="col-sm-10">
-            <?php echo $description; ?>
+            <div id="content" class="<?php echo $class; ?>">
+                <?php echo $content_top; ?>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <?php
+                        $thisURL = 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+                        foreach ($breadcrumbs as $breadcrumb) { ?>
+
+                            <?php if ($thisURL !== $breadcrumb['href'] )  { ?>
+                            <li class="breadcrumb-item">
+                                <a href="<?php echo $breadcrumb['href']; ?>">
+                                    <?php echo $breadcrumb['text']; ?>
+                                </a>
+                            </li>
+                            <?php }  else { ?>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <?php echo $breadcrumb['text']; ?>
+                            </li>
+                            <?php } ?>
+                            <?php } ?>
+                    </ol>
+                </nav>
             </div>
-            <?php } ?>
+            <div class="col-12 text-center">
+                <p class="h3 text-primary text-uppercase mb-5">
+                    <?php $heading_title = 'SMART BROW TINTING SYSTEM'; echo $heading_title; ?>
+                </p>
+            </div>
         </div>
+    </div>
+
+
+    <?php if ($thumb || $description) { ?>
+    <div class="row">
+        <?php if ($thumb) { ?>
+        <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
+        <?php } ?>
+        <?php if ($description) { ?>
+        <div class="col-sm-10">
+            <?php echo $description; ?>
+        </div>
+        <?php } ?>
+    </div>
     <?php } ?>
 
     <div class="container">
         <?php if ($products) { ?>
         <div class="row justify-content-center justify-items-end ">
             <?php foreach ($products as $product) { ?>
-                <div class="col-auto">
-                    <div class="card border-0 card-prod-item ">
+            <div class="col-auto">
+                <div class="card border-0 card-prod-item ">
 
-                        <?php if ($product['rating']) { ?>
-                            <div class="card-header ">
-                                <div class="rating ">
-                                    <?php for ($i = 1; $i <= 5; $i++) { ?>
-                                    <?php if ($product['rating'] < $i) { ?>
-                                    <span><i class="fa fa-star-o "></i></span>
-                                    <?php } else { ?>
-                                    <span><i class="fa fa-star "></i></span>
-                                    <?php } ?>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        <?php } ?>
-
-                        <div class="card-img img-product ">
-                            <a href="<?php echo $product[ 'href']; ?>" data-toggle="tooltip" data-placement="bottom" title="
-                                <?php echo $product['description']; ?>"><img class="img-fluid" src="<?php echo $product['thumb']; ?>" srcset="<?php echo $product['thumb']; ?> 1x, <?php echo $product['thumb']; ?> 2x" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
-                            <div class="btn-group position-absolute">
-                                <button type="button" class="btn btn-default text-info" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-bar-chart"></i></button>
-                                <button type="button" class="btn btn-default  text-info" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-                            </div>
+                    <?php if ($product['rating']) { ?>
+                    <div class="card-header ">
+                        <div class="rating ">
+                            <?php for ($i = 1; $i <= 5; $i++) { ?>
+                            <?php if ($product['rating'] < $i) { ?>
+                            <span><i class="fa fa-star-o "></i></span>
+                            <?php } else { ?>
+                            <span><i class="fa fa-star "></i></span>
+                            <?php } ?>
+                            <?php } ?>
                         </div>
+                    </div>
+                    <?php } ?>
+
+                    <div class="card-img img-product ">
+                        <a href="<?php echo $product[ 'href']; ?>" data-toggle="tooltip" data-placement="bottom" title="
+                                <?php echo $product['description']; ?>"><img class="img-fluid" src="<?php echo $product['thumb']; ?>" srcset="<?php echo $product['thumb']; ?> 1x, <?php echo $product['thumb']; ?> 2x" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
+                        <div class="btn-group position-absolute">
+                            <button type="button" class="btn btn-default text-info" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-bar-chart"></i></button>
+                            <button type="button" class="btn btn-default  text-info" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
+                        </div>
+                    </div>
 
                     <div class="card-body px-3 text-center border-0">
                         <p class="card-tags text-uppercase text-left fz-14 text-info"> <strong><i></i></strong> </p>
                         <p class="card-title h6"><strong><?php echo $product['name']; ?></strong></p>
 
                         <?php if ($product['price']) { ?>
-                            <p class="card-price text-primary">
-                                <?php if (!$product['special']) { ?>
-                                <strong><?php echo $product['price']; ?></strong>
-                                <?php } else { ?>
-                                <strong class="text-danger"><?php echo $product['special']; ?></strong>
-                                <?php } ?>
-                            </p>
+                        <p class="card-price text-primary">
+                            <?php if (!$product['special']) { ?>
+                            <strong><?php echo $product['price']; ?></strong>
+                            <?php } else { ?>
+                            <strong class="text-danger"><?php echo $product['special']; ?></strong>
+                            <?php } ?>
+                        </p>
                         <?php } ?>
 
                         <a class="btn-text text-center btn-cart" onclick="cart.add('<?php echo $product['product_id']; ?>');">
@@ -96,15 +119,15 @@
                         <div class="card-options">
 
                             <?php if ($product['options']) { ?>
-                                <table>
+                            <table>
                                 <?php foreach($product['options'] as $options) { 
                                         if ($options['type'] === 'radio') { ?>
-                                        <div class="btn-group" role="group" aria-label="colors">
-                                        <?php foreach($options['product_option_value'] as $option) { ?>
-                                            
-                                            <?php if ( $option['image'] ) { ?>
-                                            
-                                            <button type="button" data-toggle="tooltip" title="<?php echo $option['name']; ?>" class="btn btn-options-colors mx-1" >
+                                <div class="btn-group" role="group" aria-label="colors">
+                                    <?php foreach($options['product_option_value'] as $option) { ?>
+
+                                    <?php if ( $option['image'] ) { ?>
+
+                                    <button type="button" data-toggle="tooltip" title="<?php echo $option['name']; ?>" class="btn btn-options-colors mx-1">
                                             <div class="option-color">
                                                 <img class="img-fluid d-inline rounded-circle"
                                                 src="image/<?php echo $option['image']; ?>"
@@ -115,22 +138,22 @@
                                                 />
                                             </div>
                                             </button>
-                                            
-                                            
-                                            <?php } ?>
-                                        <?php } ?>
-                                        </div>
-                                    <?php } 
+
+
+                                    <?php } ?>
+                                    <?php } ?>
+                                </div>
+                                <?php } 
                                 } ?>
-                                </table>
+                            </table>
 
                             <?php } ?>
                         </div>
                     </div>
                 </div>
+            </div>
+            <?php } ?>
         </div>
-    <?php } ?>
-</div>
         <div class="row">
             <div class="col-sm-6 text-left">
                 <?php echo $pagination; ?>
@@ -142,6 +165,38 @@
         <?php } ?>
     </div>
 </section>
+
+<section class="mt-4">
+    <div class="jumbotron text-center bg-info m-0">
+        <p class="h2 text-uppercase text-primary mb-0">
+            <?php echo $heading_title; ?>
+        </p>
+    </div>
+    <div class="container-fluid m-0 p-0">
+        <div class="row no-gutters justify-content-between">
+
+            <div class="col text-center">
+
+                <div id="self_cat" class="player" style="display:block; margin: 0px; background: rgba(0,0,0,0.5)" data-property="{
+                        videoURL: '69NAGbkCdIc',
+                        containment: 'self',
+                        showControls: true,
+                        mute: false,
+                        autoPlay: false,
+                        loop: false,
+                        opacity: 1,
+                        showYTLogo: false,
+                        optimizeDisplay: false,
+                        coverImage:'catalog/view/theme/basecart/app/img/@1x/v1.jpg',
+                        ratio:'16/9',
+                        quality:'default'
+                    }"></div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <div class="container" hidden>
     <div class="row">
@@ -164,7 +219,7 @@
                 </li>
                 <?php } ?>
             </ul>
-            
+
             <?php if ($thumb || $description) { ?>
             <div class="row">
                 <?php if ($thumb) { ?>
@@ -179,9 +234,9 @@
             <hr>
             <?php } ?>
             <?php if ($categories) { ?>
-                <h3>
-                    <?php echo $text_refine; ?>
-                </h3>
+            <h3>
+                <?php echo $text_refine; ?>
+            </h3>
             <?php if (count($categories) <= 5) { ?>
             <div class="row">
                 <div class="col-sm-3">
@@ -194,21 +249,21 @@
                     </div>
                 </div>
             </div>
-                <?php } else { ?>
-                <div class="row">
-                    <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
-                    <div class="col-sm-3">
-                        <div class="list-group">
-                            <?php foreach ($categories as $category) { ?>
-                            <a href="<?php echo $category['href']; ?>" class="list-group-item">
-                                <?php echo $category['name']; ?>
-                            </a>
-                            <?php } ?>
-                        </div>
+            <?php } else { ?>
+            <div class="row">
+                <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
+                <div class="col-sm-3">
+                    <div class="list-group">
+                        <?php foreach ($categories as $category) { ?>
+                        <a href="<?php echo $category['href']; ?>" class="list-group-item">
+                            <?php echo $category['name']; ?>
+                        </a>
+                        <?php } ?>
                     </div>
-                    <?php } ?>
                 </div>
                 <?php } ?>
+            </div>
+            <?php } ?>
             <?php } ?>
             <?php if ($products) { ?>
             <p>
